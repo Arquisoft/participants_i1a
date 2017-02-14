@@ -41,6 +41,6 @@
         </td>
       </tr>
     </table>
-    <a href="login">Cerrar sesión</a>
+    <a href="login">Logout</a>
   </body>
 </html>
