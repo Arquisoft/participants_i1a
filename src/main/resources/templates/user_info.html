@@ -1,42 +1,32 @@
-<!DOCTYPE>
-<html>
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
   <head>
     <title>User info</title>
-    <meta charset="UTF-8"/>
+    <meta http-equiv="Content-Type" charset="UTF-8"/>
   </head>
   <body>
     <table>
       <tr>
-        <td>Name:</td><td id="name"><span th:text="${user.firstName}"/></td>
+        <td>Name:</td><td id="name"><p th:text="${user.firstName}"/></td>
       </tr>
       <tr>
-        <td>Email:</td><td id="surname"><span th:text="${user.getLastName()}"/></td>
+        <td>Email:</td><td id="surname"><p th:text="${user.lastName}"/></td>
       </tr>
       <tr>
-        <td>Date of birth:</td><td id="birth"><span th:text="${user.dateOfBirth}"/></td>
+        <td>Date of birth:</td><td id="birth"><p th:text="${user.dateOfBirth}"/></td>
       </tr>
       <tr>
-        <td>Address:</td><td id="address"><span th:text="${user.Address}"/></td>
+        <td>Address:</td><td id="address"><p th:text="${user.Address}"/></td>
       </tr>
       <tr>
-        <td>Nationality:</td><td id="nationality"><span th:text="${user.Nationality}"/></td>
+        <td>Nationality:</td><td id="nationality"><p th:text="${user.Nationality}"/></td>
       </tr>
       <tr>
-        <td>Password:</td>
         <td>
-          <input name="pass" type="password" placeholder="Password" />
-        </td>
-      </tr>
-      <tr>
-        <td></td>
-        <td>
-          <input name="repass" type="password" placeholder="Re-password" />
-        </td>
-        <td>
-          <input type="submit" method="post" value="Change" />
+          <input type="submit" value="Change" />
         </td>
       </tr>
     </table>
-    <a href="login">Cerrar sesión</a>
+    <a href="/">Logout</a>
   </body>
 </html>

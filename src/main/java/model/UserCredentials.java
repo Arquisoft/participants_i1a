@@ -13,5 +13,13 @@ public class UserCredentials {
 	public String getPassword(){
 		return this.password;
 	}
+	
+	public void setUsername(String username){
+		this.username = username;
+	}
+	
+	public void setPassword(String password){
+		this.password = password;
+	}
 
 }

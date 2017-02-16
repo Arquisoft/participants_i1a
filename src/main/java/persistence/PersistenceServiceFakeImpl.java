@@ -12,7 +12,7 @@ public class PersistenceServiceFakeImpl implements PersistenceService {
 	@Override
 	public User findByID(String DNI) {
 		User user = new User("DNI");
-		user.setPassword("");
+		user.setPassword("123");
 		return user;
 	}
 

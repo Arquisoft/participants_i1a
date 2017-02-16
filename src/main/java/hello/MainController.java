@@ -1,6 +1,8 @@
 package hello;
 
 
+import java.util.Date;
+
 import javax.persistence.PersistenceException;
 import javax.servlet.http.HttpServletRequest;
 
@@ -18,14 +20,8 @@ import persistence.PersistenceFactory;
 
 @Controller
 public class MainController {
-	
-    @RequestMapping("/")
-    public String landing(Model model) {
-    	model.addAttribute("nombre", "Amigo");
-        return "saludo";
-    }
     
-    @GetMapping("/login")
+    @GetMapping("/")
     public String login(Model model) {
     	model.addAttribute("credentials", new UserCredentials());
         return "login";
@@ -36,6 +32,11 @@ public class MainController {
     	String username = credentials.getUsername();
     	String pass = credentials.getPassword();
     	User user = PersistenceFactory.getPersistenceService().findByID(username);
+    	user.setFirstName("Sergio");
+    	user.setLastName("Mosquera");
+    	user.setAddress("Avenida Principal");
+    	user.setDateOfBirth(new Date());
+    	user.setNationality("Spain");
     	
     	if(user.getPassword().equals(pass)){
     		model.addAttribute("user", user);
