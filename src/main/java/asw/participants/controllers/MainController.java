@@ -1,4 +1,4 @@
-package hello;
+package asw.participants.controllers;
 
 
 import java.util.Date;
@@ -6,6 +6,7 @@ import java.util.Date;
 import javax.persistence.PersistenceException;
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,13 +14,16 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import model.User;
-import model.UserCredentials;
-import persistence.PersistenceFactory;
+import asw.participants.model.User;
+import asw.participants.model.UserCredentials;
+import asw.participants.persistence.UserService;
 
 
 @Controller
 public class MainController {
+	
+	@Autowired
+	UserService us;
     
     @GetMapping("/")
     public String login(Model model) {
@@ -31,7 +35,7 @@ public class MainController {
     public String hola(@ModelAttribute UserCredentials credentials, Model model) {
     	String username = credentials.getUsername();
     	String pass = credentials.getPassword();
-    	User user = PersistenceFactory.getPersistenceService().findByID(username);
+    	User user = us.findByID(username);
     	user.setFirstName("Sergio");
     	user.setLastName("Mosquera");
     	user.setAddress("Avenida Principal");
@@ -65,7 +69,7 @@ public class MainController {
     	if(newPassword.equals(newRepeatedPassword)) {
 	    	if(user.getPassword().equals(oldPassword)){
 	    		try {
-	    			PersistenceFactory.getPersistenceService().changePassword(user, newPassword);
+	    			us.changePassword(user, newPassword);
 	    			request.setAttribute("user", user);
 	    			messageForTheUser = "The password has been updated succesfully";
 	    		}catch(PersistenceException p) {

@@ -1,4 +1,4 @@
-package model;
+package asw.participants.model;
 
 import java.util.Date;
 

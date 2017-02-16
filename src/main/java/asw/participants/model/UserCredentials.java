@@ -1,4 +1,4 @@
-package model;
+package asw.participants.model;
 
 public class UserCredentials {
 	
