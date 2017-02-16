@@ -6,10 +6,15 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import model.User;
+import model.UserCredentials;
 import persistence.PersistenceFactory;
+
 
 @Controller
 public class MainController {
@@ -20,11 +25,24 @@ public class MainController {
         return "saludo";
     }
     
+    @GetMapping("/login")
+    public String login(Model model) {
+    	model.addAttribute("credentials", new UserCredentials());
+        return "login";
+    }
     
-    @RequestMapping("/login.jsp")
-    public String hola(Model model) {
-    	model.addAttribute("nombre", "Luis");
-        return "saludo";
+    @PostMapping("/login")
+    public String hola(@ModelAttribute UserCredentials credentials, Model model) {
+    	String username = credentials.getUsername();
+    	String pass = credentials.getPassword();
+    	User user = PersistenceFactory.getPersistenceService().findByID(username);
+    	
+    	if(user.getPassword().equals(pass)){
+    		model.addAttribute("user", user);
+    		return "user_info";
+    	}
+    	else
+    		return "error";
     }
     
     

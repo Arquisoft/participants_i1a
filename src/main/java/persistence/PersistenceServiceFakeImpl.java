@@ -10,8 +10,10 @@ public class PersistenceServiceFakeImpl implements PersistenceService {
 	}
 
 	@Override
-	public User findByID(Long id) {
-		return new User("DNI del usuario");
+	public User findByID(String DNI) {
+		User user = new User("DNI");
+		user.setPassword("");
+		return user;
 	}
 
 }
