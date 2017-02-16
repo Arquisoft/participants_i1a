@@ -1,16 +1,12 @@
 package hello;
 
 
-import java.util.Date;
-
 import javax.persistence.PersistenceException;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import model.User;
@@ -27,24 +23,24 @@ public class MainController {
         return "login";
     }
     
-    @PostMapping("/login")
-    public String hola(@ModelAttribute UserCredentials credentials, Model model) {
-    	String username = credentials.getUsername();
-    	String pass = credentials.getPassword();
-    	User user = PersistenceFactory.getPersistenceService().findByID(username);
-    	user.setFirstName("Sergio");
-    	user.setLastName("Mosquera");
-    	user.setAddress("Avenida Principal");
-    	user.setDateOfBirth(new Date());
-    	user.setNationality("Spain");
-    	
-    	if(user.getPassword().equals(pass)){
-    		model.addAttribute("user", user);
-    		return "user_info";
-    	}
-    	else
-    		return "error";
-    }
+//    @PostMapping("/login")
+//    public String hola(@ModelAttribute UserCredentials credentials, Model model) {
+//    	String username = credentials.getUsername();
+//    	String pass = credentials.getPassword();
+//    	User user = PersistenceFactory.getPersistenceService().findByID(username);
+//    	user.setFirstName("Sergio");
+//    	user.setLastName("Mosquera");
+//    	user.setAddress("Avenida Principal");
+//    	user.setDateOfBirth(new Date());
+//    	user.setNationality("Spain");
+//    	
+//    	if(user.getPassword().equals(pass)){
+//    		model.addAttribute("user", user);
+//    		return "user_info";
+//    	}
+//    	else
+//    		return "error";
+//    }
     
     
     @RequestMapping("/change_password")
