@@ -28,7 +28,7 @@ public class APIController {
     
     
     @PostMapping(value = "/login", produces = "application/json")
-    public User hola(@ModelAttribute UserCredentials credentials, Model model) {
+    public User loginJSON(@ModelAttribute UserCredentials credentials, Model model) {
     	String username = credentials.getUsername();
     	String pass = credentials.getPassword();
     	User user = Services.getUserService().findByID(username);
@@ -36,6 +36,20 @@ public class APIController {
     	if(user.getPassword().equals(pass)){
     		model.addAttribute("user", user);
     		return user;
+    	}
+    	else
+    		return null;
+    }
+    
+    @PostMapping(value = "/login", produces = "text/xml")
+    public String loginXML(@ModelAttribute UserCredentials credentials, Model model) {
+    	String username = credentials.getUsername();
+    	String pass = credentials.getPassword();
+    	User user = Services.getUserService().findByID(username);
+    	
+    	if(user.getPassword().equals(pass)){
+    		model.addAttribute("user", user);
+    		return user.toXML();
     	}
     	else
     		return null;
