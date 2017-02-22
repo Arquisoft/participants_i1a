@@ -129,6 +129,51 @@ public class User {
 				+ dateOfBirth + ", Address=" + Address + ", Nationality=" + Nationality + ", DNI=" + DNI + "]";
 	}
 
+	public String toXML(){
+		StringBuilder sb = new StringBuilder();
+		
+		sb.append("<user>");
+		
+		sb.append("<DNI>");
+		if(this.getDNI()!=null)
+			sb.append(this.getDNI());
+		sb.append("</DNI>");
+		
+		sb.append("<firstName>");
+		if(this.getFirstName()!=null)
+		sb.append(this.getFirstName());
+		sb.append("</firstName>");
+		
+		sb.append("<lastName>");
+		if(this.getLastName()!=null)
+			sb.append(this.getLastName());
+		sb.append("</lastName>");
+		
+		sb.append("<Email>");
+		if(this.getEmail()!=null)
+			sb.append(this.getEmail());
+		sb.append("</Email>");
+		
+		sb.append("<dateOfBirth>");
+		if(this.getDateOfBirth()!=null)
+			sb.append(this.getDateOfBirth());
+		sb.append("</dateOfBirth>");
+		
+		sb.append("<Address>");
+		if(this.getAddress()!=null)
+			sb.append(this.getAddress());
+		sb.append("</Address>");
+		
+		sb.append("<Nationality>");
+		if(this.getNationality()!=null)
+			sb.append(this.getNationality());
+		sb.append("</Nationality>");
+
+		sb.append("</user>");
+		
+		return sb.toString();
+	}
+	
 	public String getPassword() {
 		return password;
 	}
