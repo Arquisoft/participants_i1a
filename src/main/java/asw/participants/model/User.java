@@ -5,18 +5,28 @@ import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.xml.bind.annotation.*;
 
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 @Entity
 public class User {
-	
+	@XmlAttribute
 	private String firstName;
+	@XmlAttribute
 	private String lastName;
+	@XmlAttribute
 	private String Email;
+	@XmlAttribute
 	private Date dateOfBirth;
+	@XmlAttribute
 	private String password;
 	
+	@XmlAttribute
 	private String Address;
+	@XmlAttribute
 	private String Nationality;
+	@XmlAttribute
 	private String DNI;
 	
 	@Id @GeneratedValue

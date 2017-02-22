@@ -4,6 +4,7 @@ package asw.participants.examples;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -27,7 +28,7 @@ public class APIController {
     }
     
     
-    @PostMapping(value = "/login", produces = "application/json")
+    @PostMapping(value = "/login", produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
     public User hola(@ModelAttribute UserCredentials credentials, Model model) {
     	String username = credentials.getUsername();
     	String pass = credentials.getPassword();
