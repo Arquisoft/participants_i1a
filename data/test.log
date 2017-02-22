@@ -1,2 +1,11 @@
-/*C3*/SET SCHEMA PUBLIC
+/*C2*/SET SCHEMA PUBLIC
+INSERT INTO USERS VALUES(1,'Andr\u00e9s','Su\u00e1rez','andres@mail.com','1995-11-08','andres','Calle Asturias, 25, 2\u00baA','Spain','76935114N')
+COMMIT
+INSERT INTO USERS VALUES(2,'Rub\u00e9n','Mart\u00ednez','ruben@mail.com','1992-10-18','ruben','Calle Azc\u00e1rraga 41, 4\u00baC','Spain','76930254T')
+COMMIT
+INSERT INTO USERS VALUES(3,'Rub\u00e9n','Mart\u00ednez','ruben@mail.com','1992-10-18','ruben','Calle Azc\u00e1rraga 41, 4\u00baC','Spain','76930254T')
+COMMIT
+DELETE FROM USERS WHERE ID=3
+INSERT INTO USERS VALUES(3,'Dario','Garc\u00eda','dario@mail.com','1993-10-11','dario','Calle Gonz\u00e1lez Besada 18, 2\u00baB','Spain','410302549')
+COMMIT
 DISCONNECT
