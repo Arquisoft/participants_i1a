@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import asw.participants.model.User;
 import asw.participants.model.UserCredentials;
+import asw.participants.persistence.Services;
 import asw.participants.persistence.UserService;
 
 @RestController
@@ -20,10 +21,26 @@ public class APIController {
 	@Autowired
 	UserService us;
 	
-    @RequestMapping("/user")
+    @RequestMapping("/user_info")
     public UserInfo user() {
         return new UserInfo("pepe",0);
     }
+    
+    
+    @PostMapping(value = "/login", produces = "application/json")
+    public User hola(@ModelAttribute UserCredentials credentials, Model model) {
+    	String username = credentials.getUsername();
+    	String pass = credentials.getPassword();
+    	User user = Services.getUserService().findByID(username);
+    	
+    	if(user.getPassword().equals(pass)){
+    		model.addAttribute("user", user);
+    		return user;
+    	}
+    	else
+    		return null;
+    }
+    
     
 //    @PostMapping("/login")
 //    public User hola(@ModelAttribute UserCredentials credentials, Model model) {

@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import asw.participants.model.User;
 import asw.participants.model.UserCredentials;
+import asw.participants.persistence.Services;
 import asw.participants.persistence.UserService;
 
 
@@ -31,16 +32,17 @@ public class MainController {
         return "login";
     }
     
-    @PostMapping("/login")
+//    @GetMapping("/user_info")
+//    public String login(Model model) {
+//    	model.addAttribute("credentials", new UserCredentials());
+//        return "login";
+//    }
+    
+    @PostMapping(value = "/login", produces = "application/html")
     public String hola(@ModelAttribute UserCredentials credentials, Model model) {
     	String username = credentials.getUsername();
     	String pass = credentials.getPassword();
-    	User user = us.findByID(username);
-    	user.setFirstName("Sergio");
-    	user.setLastName("Mosquera");
-    	user.setAddress("Avenida Principal");
-    	user.setDateOfBirth(new Date());
-    	user.setNationality("Spain");
+    	User user = Services.getUserService().findByID(username);
     	
     	if(user.getPassword().equals(pass)){
     		model.addAttribute("user", user);
@@ -69,7 +71,7 @@ public class MainController {
     	if(newPassword.equals(newRepeatedPassword)) {
 	    	if(user.getPassword().equals(oldPassword)){
 	    		try {
-	    			us.changePassword(user, newPassword);
+	    			Services.getUserService().changePassword(user, newPassword);
 	    			request.setAttribute("user", user);
 	    			messageForTheUser = "The password has been updated succesfully";
 	    		}catch(PersistenceException p) {
@@ -79,7 +81,7 @@ public class MainController {
     	}
     	
     	request.setAttribute("messageForTheUser",  messageForTheUser);
-        return "change_password";
+        return "login";
     }
 
 }
