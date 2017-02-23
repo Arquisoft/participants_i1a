@@ -7,6 +7,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.xml.bind.annotation.*;
 
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+
+@Component
+@Scope("session")
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
 @Entity
@@ -16,16 +21,16 @@ public class User {
 	@XmlAttribute
 	private String lastName;
 	@XmlAttribute
-	private String Email;
+	private String email;
 	@XmlAttribute
 	private Date dateOfBirth;
 	@XmlAttribute
 	private String password;
 	
 	@XmlAttribute
-	private String Address;
+	private String address;
 	@XmlAttribute
-	private String Nationality;
+	private String nationality;
 	@XmlAttribute
 	private String DNI;
 	
@@ -59,11 +64,11 @@ public class User {
 	}
 
 	public String getEmail() {
-		return Email;
+		return email;
 	}
 
 	public void setEmail(String email) {
-		Email = email;
+		this.email = email;
 	}
 
 	public Date getDateOfBirth() {
@@ -75,19 +80,19 @@ public class User {
 	}
 
 	public String getAddress() {
-		return Address;
+		return address;
 	}
 
 	public void setAddress(String address) {
-		Address = address;
+		this.address = address;
 	}
 
 	public String getNationality() {
-		return Nationality;
+		return nationality;
 	}
 
 	public void setNationality(String nationality) {
-		Nationality = nationality;
+		this.nationality = nationality;
 	}
 
 	public String getDNI() {
@@ -125,8 +130,8 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User [firstName=" + firstName + ", lastName=" + lastName + ", Email=" + Email + ", dateOfBirth="
-				+ dateOfBirth + ", Address=" + Address + ", Nationality=" + Nationality + ", DNI=" + DNI + "]";
+		return "User [firstName=" + firstName + ", lastName=" + lastName + ", Email=" + email + ", dateOfBirth="
+				+ dateOfBirth + ", Address=" + address + ", Nationality=" + nationality + ", DNI=" + DNI + "]";
 	}
 
 	public String toXML(){

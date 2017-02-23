@@ -19,14 +19,16 @@
         <td id="birth_label">Date of birth:</td><td><p id="birth" th:text="${#dates.format(user.dateOfBirth, 'dd-MM-yyyy')}"/></td>
       </tr>
       <tr>
-        <td id="address_label">Address:</td><td><p id="address" th:text="${user.Address}"/></td>
+        <td id="address_label">Address:</td><td><p id="address" th:text="${user.address}"/></td>
       </tr>
       <tr>
-        <td id="nationality_label">Nationality:</td><td><p id="nationality" th:text="${user.Nationality}"/></td>
+        <td id="nationality_label">Nationality:</td><td><p id="nationality" th:text="${user.nationality}"/></td>
       </tr>
       <tr>
         <td>
-          <input type="submit" value="Change" />
+        	<form action="change_password">
+          		<input type="submit" value="Change" />
+          	</form>
         </td>
       </tr>
     </table>
