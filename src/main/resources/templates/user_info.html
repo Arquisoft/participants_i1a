@@ -7,19 +7,22 @@
   <body>
     <table>
       <tr>
-        <td>Name:</td><td id="name"><p th:text="${user.firstName}"/></td>
+        <td id="name_label">Name:</td><td><p id="name" th:text="${user.firstName}"/></td>
       </tr>
       <tr>
-        <td>Email:</td><td id="surname"><p th:text="${user.lastName}"/></td>
+        <td id="surname_label">Surname:</td><td><p id="surname" th:text="${user.lastName}"/></td>
       </tr>
       <tr>
-        <td>Date of birth:</td><td id="birth"><p th:text="${user.dateOfBirth}"/></td>
+        <td id="email_label">Email:</td><td><p id="email" th:text="${user.email}"/></td>
       </tr>
       <tr>
-        <td>Address:</td><td id="address"><p th:text="${user.Address}"/></td>
+        <td id="birth_label">Date of birth:</td><td><p id="birth" th:text="${#dates.format(user.dateOfBirth, 'dd-MM-yyyy')}"/></td>
       </tr>
       <tr>
-        <td>Nationality:</td><td id="nationality"><p th:text="${user.Nationality}"/></td>
+        <td id="address_label">Address:</td><td><p id="address" th:text="${user.Address}"/></td>
+      </tr>
+      <tr>
+        <td id="nationality_label">Nationality:</td><td><p id="nationality" th:text="${user.Nationality}"/></td>
       </tr>
       <tr>
         <td>

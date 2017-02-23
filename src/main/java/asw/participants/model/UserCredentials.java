@@ -6,6 +6,13 @@ public class UserCredentials {
 	
 	private String password;
 	
+	public UserCredentials(){}
+	
+	public UserCredentials(String username, String password) {
+	    this.username = username;
+	    this.password = password;
+	}
+
 	public String getUsername(){
 		return this.username;
 	}
