@@ -1,4 +1,4 @@
-package asw.participants.examples;
+package asw.participants.controllers;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import asw.participants.examples.UserInfo;
 import asw.participants.model.User;
 import asw.participants.model.UserCredentials;
 import asw.participants.persistence.Services;
