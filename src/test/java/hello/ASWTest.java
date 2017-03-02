@@ -32,7 +32,7 @@ import asw.participants.Application;
 @SpringApplicationConfiguration(classes = Application.class)
 @WebAppConfiguration
 @IntegrationTest( "server.port=0" )
-public class ASWTestClass {
+public class ASWTest {
 
     @Value("${local.server.port}")
     private int port;
